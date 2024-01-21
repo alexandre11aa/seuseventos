@@ -1,6 +1,8 @@
+# Seus Eventos
+
 Site para criação de eventos desenvolvido em Django e Bootstrap.
 
-# Requirements:
+# Requirements
 
 Python 3.12.1
 
