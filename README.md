@@ -1,6 +1,6 @@
 Site para criação de eventos desenvolvido em Django e Bootstrap.
 
-* Requirements:
+REQUIREMENTS:
 
 asgiref  3.7.2  
 Django   5.0.1  
