@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      {% if item.banner %}
+        <img src="{{ item.banner.url }}" alt="Banner do Evento" class="img-fluid" style="display: block; margin: 0 auto;">
+      {% else %}
+        <h2 class="text-center">Detalhes do Evento</h2>
+      {% endif %}
+    </div>
+    <div class="card-body">
+      <div class="mb-3">
+          <strong>Nome:</strong> {{ item.name }}
+      </div>
+      <div class="mb-3">
+          <strong>Email:</strong> {{ item.email }}
+      </div>
+      <div class="mb-3">
+          <strong>Telefone:</strong> {{ item.phone }}
+      </div>
+      <div class="mb-3">
+          <strong>Endereço:</strong> {{ item.adress }}
+      </div>
+      <div class="mb-3">
+          <strong>Cidade:</strong> {{ item.city }}
+      </div>
+      <div class="mb-3">
+          <strong>Estado:</strong> {{ item.state }}
+      </div>
+      <div class="mb-3">
+          <strong>País:</strong> {{ item.country }}
+      </div>
+      <div class="mb-3">
+          <strong>Data do Evento:</strong> {{ item.date }}
+      </div>
+      <div class="mb-3">
+          <strong>Hora de Início:</strong> {{ item.start_time }}
+      </div>
+      <div class="mb-3">
+          <strong>Hora de Término:</strong> {{ item.end_time }}
+      </div>
+      <div class="mb-3">
+          <strong>Descrição:</strong> {{ item.description }}
+      </div>
+      <div class="card-header">
+        <h4 class="text-center">Cadastrar-se no Evento</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST" class="form-signin">
+        {% csrf_token %}
+          <div class="form-group">
+              <label for="inputUsername">Nome:</label>
+              <input type="text" class="form-control" id="inputUsername" placeholder="Enter username" name="name" required autofocus>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail">E-mail:</label>
+            <input type="text" class="form-control" id="inputEmail" placeholder="Enter e-mail" name="email" required autofocus>
+          </div>
+          <div class="text-center">
+              <button type="submit" class="btn btn-primary">Participar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+    <h2>Lista de Participantes</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for participant in participants_list %}
+            <tr>
+                <td>{{ participant.name }}</td>
+                <td>{{ participant.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+{% endblock %}
